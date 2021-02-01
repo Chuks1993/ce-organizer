@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.js": "/ce-organizer/static/js/main.63ebc422.chunk.js",
+    "main.js.map": "/ce-organizer/static/js/main.63ebc422.chunk.js.map",
+    "runtime-main.js": "/ce-organizer/static/js/runtime-main.42109f54.js",
+    "runtime-main.js.map": "/ce-organizer/static/js/runtime-main.42109f54.js.map",
+    "static/css/2.9aaf2cf1.chunk.css": "/ce-organizer/static/css/2.9aaf2cf1.chunk.css",
+    "static/js/2.d4804328.chunk.js": "/ce-organizer/static/js/2.d4804328.chunk.js",
+    "static/js/2.d4804328.chunk.js.map": "/ce-organizer/static/js/2.d4804328.chunk.js.map",
+    "static/js/3.a5ef431c.chunk.js": "/ce-organizer/static/js/3.a5ef431c.chunk.js",
+    "static/js/3.a5ef431c.chunk.js.map": "/ce-organizer/static/js/3.a5ef431c.chunk.js.map",
+    "index.html": "/ce-organizer/index.html",
+    "static/css/2.9aaf2cf1.chunk.css.map": "/ce-organizer/static/css/2.9aaf2cf1.chunk.css.map",
+    "static/js/2.d4804328.chunk.js.LICENSE.txt": "/ce-organizer/static/js/2.d4804328.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.42109f54.js",
+    "static/css/2.9aaf2cf1.chunk.css",
+    "static/js/2.d4804328.chunk.js",
+    "static/js/main.63ebc422.chunk.js"
+  ]
+}
