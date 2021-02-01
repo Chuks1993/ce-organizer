@@ -41,6 +41,7 @@ const useStyles = makeStyles(theme => ({
 		padding: theme.spacing(1),
 	},
 }))
+
 const EventFormModal = ({onModalClose, addEvent, closeModal, selectedSlot}) => {
 	const classes = useStyles()
 	const [isEventAllday, setIsEventAllday] = useState(!selectedSlot)
@@ -68,87 +69,83 @@ const EventFormModal = ({onModalClose, addEvent, closeModal, selectedSlot}) => {
 			aria-labelledby='event-form-modal'
 			aria-describedby='event-form'
 		>
-			<Paper
-				component='form'
-				onSubmit={handleSubmit(onSubmit)}
-				className={classes.paper}
-			>
-				<AppBar color='transparent' elevation={0} position='static'>
-					<Toolbar>
-						<Typography
-							className={classes['modal-header']}
-							color='primary'
-							variant='h5'
-						>
-							Add Event
-						</Typography>
-						<IconButton color='primary' onClick={closeModal}>
-							<CloseRoundedIcon />
-						</IconButton>
-					</Toolbar>
-				</AppBar>
-				<Grid className={classes['modal-form']} container>
-					<Grid item xs={12}>
-						<TextField
-							size='small'
-							variant='outlined'
-							autoFocus
-							fullWidth
-							inputRef={register({required: 'Event title is required'})}
-							id='title'
-							name='title'
-							label='Title'
-						/>
-						{errors.title && (
-							<Typography color='error' variant='caption'>
-								{errors.title.message}
+			<form noValidate onSubmit={handleSubmit(onSubmit)}>
+				<Paper className={classes.paper}>
+					<AppBar color='transparent' elevation={0} position='static'>
+						<Toolbar>
+							<Typography
+								className={classes['modal-header']}
+								color='primary'
+								variant='h5'
+							>
+								Add Event
 							</Typography>
-						)}
-					</Grid>
+							<IconButton color='primary' onClick={closeModal}>
+								<CloseRoundedIcon />
+							</IconButton>
+						</Toolbar>
+					</AppBar>
+					<Grid className={classes['modal-form']} container>
+						<Grid item xs={12}>
+							<TextField
+								size='small'
+								variant='outlined'
+								autoFocus
+								fullWidth
+								inputRef={register({required: 'Event title is required'})}
+								id='title'
+								name='title'
+								label='Title'
+							/>
+							{errors.title && (
+								<Typography color='error' variant='caption'>
+									{errors.title.message}
+								</Typography>
+							)}
+						</Grid>
 
-					<Grid item xs={12}>
+						<Grid item xs={12}>
+							<TextField
+								size='small'
+								variant='outlined'
+								autoFocus
+								fullWidth
+								multiline
+								rows={10}
+								inputRef={register()}
+								id='description'
+								name='description'
+								label='Description'
+							/>
+						</Grid>
+						<Grid item xs={12}>
+							<Typography component='div' variant='body1'>
+								<Grid component='label' container alignItems='center' spacing={1}>
+									<Grid item>All day: No</Grid>
+									<Switch
+										checked={isEventAllday}
+										inputRef={register()}
+										onChange={() => setIsEventAllday(prevState => !prevState)}
+										name='allday'
+										inputProps={{'aria-label': 'allday checkbox'}}
+										color='primary'
+									/>
+									<Grid item>Yes</Grid>
+								</Grid>
+							</Typography>
+						</Grid>
+
 						<TextField
-							size='small'
-							variant='outlined'
-							autoFocus
-							fullWidth
-							multiline
-							rows={10}
+							id='start'
+							name='start'
+							label='Start'
+							type='datetime-local'
 							inputRef={register()}
-							id='description'
-							name='description'
-							label='Description'
+							InputLabelProps={{
+								shrink: true,
+							}}
 						/>
-					</Grid>
-					<Grid item xs={12}>
-						<Typography component='div' variant='body1'>
-							<Grid component='label' container alignItems='center' spacing={1}>
-								<Grid item>All day: No</Grid>
-								<Switch
-									checked={isEventAllday}
-									inputRef={register()}
-									onChange={() => setIsEventAllday(prevState => !prevState)}
-									name='allday'
-									inputProps={{'aria-label': 'allday checkbox'}}
-									color='primary'
-								/>
-								<Grid item>Yes</Grid>
-							</Grid>
-						</Typography>
-					</Grid>
 
-					<TextField
-						id='start'
-						name='start'
-						label='Start'
-						type='datetime-local'
-						inputRef={register()}
-						InputLabelProps={{
-							shrink: true,
-						}}
-					/>
-
-					{!isEventAllday && (
 						<TextField
 							id='end'
 							name='end'
@@ -159,14 +156,14 @@ const EventFormModal = ({onModalClose, addEvent, closeModal, selectedSlot}) => {
 								shrink: true,
 							}}
 						/>
-					)}
-					<Grid item xs={12}>
-						<Button color='primary' variant='contained' type='submit' fullWidth>
-							submit
-						</Button>
+						<Grid item xs={12}>
+							<Button color='primary' variant='contained' type='submit' fullWidth>
+								submit
+							</Button>
+						</Grid>
 					</Grid>
-				</Grid>
-			</Paper>
+				</Paper>
+			</form>
 		</Modal>
 	)
 }

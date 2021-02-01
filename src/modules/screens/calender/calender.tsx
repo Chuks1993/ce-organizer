@@ -20,6 +20,18 @@ const useStyles = makeStyles(theme => ({
 	},
 }))
 
+// const eventStyle = (event, start, end, isSelected) => {
+// 	const style = {
+// 		backgroundColor: '#' + event.hexColor,
+// 		borderRadius: '0px',
+// 		opacity: 0.8,
+// 		color: 'black',
+// 		border: '0px',
+// 		display: 'block',
+// 	}
+// 	return style
+// }
+
 const Calender = () => {
 	const classes = useStyles()
 	const [events, setEvents] = useState<any>([])
@@ -44,6 +56,7 @@ const Calender = () => {
 					style={{height: '85vh'}}
 					onSelectEvent={handleSlotClick}
 					onSelectSlot={handleSlotClick}
+					// eventPropGetter={eventStyle}
 				/>
 			</div>
 			{openModal && (
